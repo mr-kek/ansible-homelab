@@ -16,8 +16,14 @@ deployment:
 
 ports:
   web:
-    redirectTo: websecure
+    redirections:
+      entrypoint:
+        to: websecure
+        priority: 10
   websecure:
+    http3:
+      enabled: true
+    advertisedPort: 4443
     tls:
       enabled: true
       
